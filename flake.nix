@@ -29,8 +29,8 @@
           # Use Python 3.11
           python = pkgs.python311;
 
-        in pkgs.mkShell {
-          name = "";
+        in pkgs.mkShell rec {
+          name = "python311-DS";
           # The Nix packages provided in the environment
           packages = [
             # Python plus helper tools
@@ -73,7 +73,8 @@
         GREETING = "Python DS environment";
         
         shellHook = ''
-            echo $GREETING 
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$([[ -n "$IN_NIX_SHELL" ]] && echo " (\${name})")\$ '
+echo $GREETING 
         '';
 
         };
